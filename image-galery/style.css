@@ -48,7 +48,7 @@ body {
     height: 35px;
     border: 1px solid #000;
     border-radius: 10px;
-    padding: 0 10px;
+    padding: 0 40px;
     color: #D83F31;
     font-size: 20px;
     font-style: italic;
@@ -68,6 +68,16 @@ body {
     top: 8px;
     background-color: transparent;
     border: none;
+}
+
+.delete_btn {
+    right: 20px;
+    top: 8px;
+}
+
+.find_btn {
+    right: 320px;
+    top: 8px;
 }
 
 .hidden {

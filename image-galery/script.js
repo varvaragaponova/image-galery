@@ -33,7 +33,7 @@ function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
 };
 
-/*FIND*/
+/*FIND BUTTON*/
 
 const findInput = document.querySelector('.find');
 const deleteBtn = document.querySelector('.delete_btn');
@@ -42,13 +42,9 @@ const findBtn = document.querySelector('.find_btn');
 function changeFindInputBtn() {
     findInput.addEventListener('input', () => {
         if (findInput.value !== "") {
-            findBtn.classList.remove('visible');
-            findBtn.classList.add('hidden');
             deleteBtn.classList.add('visible');
             deleteBtn.classList.remove('hidden');
         } else {
-            findBtn.classList.add('visible');
-            findBtn.classList.remove('hidden');
             deleteBtn.classList.remove('visible');
             deleteBtn.classList.add('hidden');
         }
@@ -57,10 +53,14 @@ function changeFindInputBtn() {
 
 changeFindInputBtn();
 
-deleteBtn.addEventListener('click', () => {
+deleteBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     findInput.value = "";
-    findBtn.classList.add('visible');
-    findBtn.classList.remove('hidden');
     deleteBtn.classList.remove('visible');
     deleteBtn.classList.add('hidden');
 });
+
+/*FIND TEXT*/
+
+let findContent;
+
