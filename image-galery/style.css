@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    width: 70%;
+    padding: 30px 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo_wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo_img {
+    width: 40px;
+}
+
+.logo_text {
+    font-size: 42px;
+    font-style: italic;
+    font-weight: 700;
+    color: #000;
+}
+
+.find_input {
+    position: relative;
+}
+
+.find {
+    width: 350px;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 0 10px;
+    color: #D83F31;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.find::placeholder {
+    color: #219C90;
+}
+
+.delete_btn,
+.find_btn {
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    right: 20px;
+    top: 8px;
+    background-color: transparent;
+    border: none;
+}
+
+.hidden {
+    z-index: -1;
+    opacity: 0;
+}
+
+.visible {
+    z-index: 1;
+    opacity: 1;
+}
+
+.magnifier,
+.close {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+/*MAIN*/
+
+.line {
+    width: 100%;
+    height: 5px;
+    background-color: #219C90;
+}
+
+.img_wrapper {
+    width: 85%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.img_content {
+    width: 390px;
+    height: 300px;
+    transition: all .3s;
+}
+
+.img_unsplash {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+/*FOOTER*/
+.footer {
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.school,
+.author {
+    transition: all .3s;
+}
+
+.img_school {
+    height: 50px;
+}
+
+.img_git {
+    height: 60px;
+}
+
+.year {
+    font-size: 30px;
+    color: #000;
+}
+
+@media (any-hover: hover) {
+    .delete_btn:hover,
+    .find_btn:hover,
+    .img_content:hover {
+        cursor: pointer;
+    }
+
+    .school:hover,
+    .author:hover,
+    .img_content:hover {
+        scale: 1.1;
+        transition: all .3s;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    .find {
+        width: 280px;
+    }
+
+    .logo_text {
+        font-size: 30px;
+    }
+
+    .logo_img {
+        width: 30px;
+    }
+
+    .img_school {
+        height: 30px;
+    }
+
+    .year {
+        font-size: 20px;
+    }
+
+    .img_git {
+        height: 40px;
+    }
+}
