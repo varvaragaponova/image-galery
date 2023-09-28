@@ -98,6 +98,22 @@ body {
 }
 
 /*MAIN*/
+.error {
+    position: absolute;
+    width: 319px;
+    height: 170px;
+    top: 50%;
+    margin: 0 auto;
+    display: flex;
+    transform: translateY(-50%);
+    border-radius: 25px;
+    background-color: #E9B824;
+    color: #D83F31;
+    font-size: 35px;
+    text-align: center;
+    font-weight: 900;
+    align-items: center;
+}
 
 .line {
     width: 100%;
@@ -107,6 +123,7 @@ body {
 
 .img_wrapper {
     width: 85%;
+    min-height: 650px;
     margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
