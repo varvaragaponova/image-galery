@@ -76,15 +76,18 @@ deleteBtn.addEventListener('click', (e) => {
 
 /*SUBMIT FORM*/
 
+findForm.addEventListener('submit', submit);
 
-findForm.addEventListener('submit', (e) => {
+findInput.addEventListener('keyup', (e) => {
+    if (e.code === 'Enter') {
+        e.preventDefault();
+        submit(e);
+    }
+});
+
+function submit(e) {
     e.preventDefault();
     submitText = findInput.value;
     imgWrapper.innerHTML = '';
     getData();
-    console.log(submitText);
-    console.log(url);
-})
-
-
-
+}
