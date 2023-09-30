@@ -6,6 +6,7 @@ const findBtn = document.querySelector('.find_btn');
 const findForm = document.querySelector('.find_input');
 
 let submitText;
+let downloadBtn;
 
 window.addEventListener("load", () => {
     url = `https://api.unsplash.com/search/photos?query=nature&per_page=30&page=${getRandomNumber(1, 150)}&client_id=QeEezdXf5jbb0onIJwCZLOykIigLacF63HjPlPEWdmw`;
@@ -22,8 +23,8 @@ async function getData() {
     showData(data);
 };
 
-function showData(data) {
-    for (let i = 0; i < 12; i++) {
+async function showData(data) {
+    for (let i = 0; i < 6; i++) {
         if (!data.results[i]?.urls?.regular) {
             const div = document.createElement('div');
             div.classList.add('error');
@@ -34,11 +35,23 @@ function showData(data) {
             div.classList.add('img_content');
             imgWrapper.appendChild(div);
 
-
             const img = document.createElement('img');
             img.classList.add('img_unsplash');
             img.src = data.results[i].urls.regular;
+            img.alt = "image";
             div.appendChild(img);
+
+            downloadBtn = document.createElement('button');
+            downloadBtn.classList.add('download');
+            div.appendChild(downloadBtn);
+
+            const link = document.createElement('a');
+            link.classList.add('download_link');
+            link.target = "_blank";
+            link.download = `${data.results[i].id}`;
+            downloadBtn.appendChild(link);
+
+            link.href = await downloadImg(data.results[i].links.download_location);
         }
     }
 }
@@ -90,4 +103,15 @@ function submit(e) {
     submitText = findInput.value;
     imgWrapper.innerHTML = '';
     getData();
+}
+
+/*DOWNLOAD*/
+
+async function downloadImg(link) {
+    const imgUrl = `${link}&client_id=QeEezdXf5jbb0onIJwCZLOykIigLacF63HjPlPEWdmw`;
+    const response = await fetch(imgUrl);
+    const jsonData = await response.json();
+    const imgResult = await fetch(jsonData.url);
+    const blob = await imgResult.blob();
+    return window.URL.createObjectURL(blob);
 }

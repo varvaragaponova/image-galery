@@ -115,6 +115,26 @@ body {
     align-items: center;
 }
 
+.download {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    bottom: 15px;
+    border: none;
+    transition: all .3s;
+    background-color: transparent;
+}
+
+.download_link {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-image: url("./assets/download.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .line {
     width: 100%;
     height: 5px;
@@ -132,6 +152,7 @@ body {
 }
 
 .img_content {
+    position: relative;
     width: 390px;
     height: 300px;
     transition: all .3s;
@@ -178,6 +199,12 @@ body {
     .find_btn:hover,
     .img_content:hover {
         cursor: pointer;
+    }
+
+    .download_link:hover {
+        cursor: grab;
+        scale: 1.1;
+        transition: all .3s;
     }
 
     .school:hover,
