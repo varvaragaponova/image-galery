@@ -13,14 +13,21 @@ window.addEventListener("load", () => {
 });
 
 async function getData() {
-    if(findInput.value !== '') {
-        url = `https://api.unsplash.com/search/photos?query=${submitText}&per_page=30&page=${getRandomNumber(151, 334)}&client_id=QeEezdXf5jbb0onIJwCZLOykIigLacF63HjPlPEWdmw`;
-    } else {
-        url = `https://api.unsplash.com/search/photos?query=nature&per_page=30&page=${getRandomNumber(151, 334)}&client_id=QeEezdXf5jbb0onIJwCZLOykIigLacF63HjPlPEWdmw`;
+    try {
+        if(findInput.value !== '') {
+            url = `https://api.unsplash.com/search/photos?query=${submitText}&per_page=30&page=${getRandomNumber(151, 334)}&client_id=QeEezdXf5jbb0onIJwCZLOykIigLacF63HjPlPEWdmw`;
+        } else {
+            url = `https://api.unsplash.com/search/photos?query=nature&per_page=30&page=${getRandomNumber(151, 334)}&client_id=QeEezdXf5jbb0onIJwCZLOykIigLacF63HjPlPEWdmw`;
+        }
+        const res = await fetch(url);
+        const data = await res.json();
+        showData(data);
+    } catch {
+        const div = document.createElement('div');
+        div.classList.add('error');
+        imgWrapper.appendChild(div);
+        div.textContent = "Rate limit exceeded";
     }
-    const res = await fetch(url);
-    const data = await res.json();
-    showData(data);
 };
 
 async function showData(data) {
