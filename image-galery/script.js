@@ -10,6 +10,7 @@ let downloadBtn;
 
 window.addEventListener("load", () => {
     url = `https://api.unsplash.com/search/photos?query=nature&per_page=30&page=${getRandomNumber(1, 150)}&client_id=QeEezdXf5jbb0onIJwCZLOykIigLacF63HjPlPEWdmw`;
+    getData();
 });
 
 async function getData() {
@@ -63,7 +64,7 @@ async function showData(data) {
     }
 }
 
-getData();
+// getData();
 
 function getRandomNumber(min, max) {
     let minNum = Math.ceil(min);
