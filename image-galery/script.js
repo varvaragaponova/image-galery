@@ -96,14 +96,21 @@ deleteBtn.addEventListener('click', (e) => {
 
 /*SUBMIT FORM*/
 
-findForm.addEventListener('submit', submit);
-
-findInput.addEventListener('keyup', (e) => {
-    if (e.code === 'Enter') {
-        e.preventDefault();
-        submit(e);
-    }
+findForm.addEventListener('submit', (e) => {
+    // submit(e);
+    e.preventDefault();
 });
+
+findBtn.addEventListener('click', (e) => {
+    submit(e);
+});
+
+// findForm.addEventListener('keyup', (e) => {
+//     if (e.code == 'Enter') {
+//         e.preventDefault();
+//         submit(e);
+//     };
+// });
 
 function submit(e) {
     e.preventDefault();
@@ -115,10 +122,15 @@ function submit(e) {
 /*DOWNLOAD*/
 
 async function downloadImg(link) {
-    const imgUrl = `${link}&client_id=QeEezdXf5jbb0onIJwCZLOykIigLacF63HjPlPEWdmw`;
-    const response = await fetch(imgUrl);
-    const jsonData = await response.json();
-    const imgResult = await fetch(jsonData.url);
-    const blob = await imgResult.blob();
-    return window.URL.createObjectURL(blob);
+    // return '#';
+    try {
+        const imgUrl = `${link}&client_id=QeEezdXf5jbb0onIJwCZLOykIigLacF63HjPlPEWdmw`;
+        const response = await fetch(imgUrl);
+        const jsonData = await response.json();
+        const imgResult = await fetch(jsonData.url);
+        const blob = await imgResult.blob();
+        return window.URL.createObjectURL(blob);
+    } catch {
+        alert("The image could not be downloaded, the request limit on unsplash has been exceeded. Please try again later");
+    }
 }
